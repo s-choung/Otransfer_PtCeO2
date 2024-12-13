@@ -6,76 +6,70 @@ The work employs neural network potential (NNP) models to study oxygen activatio
 ## Repository Structure
 
 ### Structure Generation (`structure_generation/`)
-- **Build Structures** (`build_structures.py`)
-  - Al<sub>2</sub>O<sub>3</sub> slab generation
-  - CeO<sub>2</sub> nanoparticle creation and hemisphere cleaving
-  - Pt single atom anchoring on ceria domains
-- **Geometry Optimization** (`optimize_geometry.py`)
-  - O<sub>2</sub> adsorption optimization
-  - Structure relaxation routines
+- **Support Generation** (`ceo2_al2o3_support.py`)
+  - Al<sub>2</sub>O<sub>3</sub> slab generation with vacuum spacing
+  - CeO<sub>2</sub> cluster creation and hemisphere cutting
+  - Structure optimization using NNP
+  - MD simulation for structure relaxation
+- **Pt Anchoring** (`pt_anchor.py`)
+  - Random Pt atom placement on CeO<sub>2</sub> domains
+  - Energy-based structure optimization
+  - Multiple Pt configurations generation
+- **Structure Reduction** (`structure_reduction.py`)
+  - Oxygen vacancy creation based on distance criteria
+  - Ce<sup>3+</sup>/Ce<sup>4+</sup> ratio control
+  - Selective oxygen removal
+- **O<sub>2</sub> Environment** (`o2_environment_generation.py`)
+  - Packmol-based O<sub>2</sub> placement
+  - Random O<sub>2</sub> configuration generation
+  - System size-dependent O<sub>2</sub> number scaling
 
 ### Simulation (`simulation/`)
-- **MD Setup** (`md_setup.py`)
-  - O<sub>2</sub> uptake simulation configuration
-  - Random O<sub>2</sub> environment generation with Packmol
-- **MD Execution** (`md_run.py`)
-  - NVT ensemble implementation
-  - Neural network potential integration via Matlantis
-
-### Analysis (`analysis/`)
-- **Structure Analysis** (`coordination.py`)
-  - Ce-O coordination analysis
-  - Surface/bulk Ce classification
-- **Visualization** (`visualization.py`)
-  - Lattice oxygen transfer visualization
-  - O<sub>2</sub> activation pathway analysis
-
-## Large Files
-Due to GitHub's file size limitations, the following files are stored on Zenodo:
-- Model structures for all domain sizes and Ce<sup>3+</sup> ratios
-- MD trajectories of annealing and O<sub>2</sub> uptake simulations
-
-The Zenodo repository can be accessed at: [Zenodo link]
+- **MD Simulation** (`O2_md_simulation.py`)
+  - NVT ensemble with Berendsen thermostat
+  - Neural network potential integration
+  - Temperature and energy monitoring
+  - Trajectory and log file generation
 
 ## Requirements
 - Python 3.x
 - ASE (Atomic Simulation Environment)
-- Matlantis (or other equivalent machine learning potential)
+- pfp_api_client (Neural Network Potential)
 - Packmol
 - NumPy
-- Matplotlib
+- Pymatgen
+- SciPy
 
 ## Structure Data Requirements
-Each code file requires specific structure data to function correctly:
 
 1. **`structure_generation/ceo2_al2o3_support.py`**
-   - **Input:** Al<sub>2</sub>O<sub>3</sub> POSCAR file for slab generation.
-   - **Output:** Generated Al<sub>2</sub>O<sub>3</sub> slab and CeO<sub>2</sub> clusters.
+   - **Input:** Al<sub>2</sub>O<sub>3</sub> POSCAR file
+   - **Output:** 
+     - Al<sub>2</sub>O<sub>3</sub> slab with vacuum
+     - Cut CeO<sub>2</sub> clusters
+     - MD trajectories
 
-2. **`simulation/O2_md_simulation.py`**
-   - **Input:** Trajectory files containing CeO<sub>2</sub> clusters with Pt atoms.
-   - **Output:** MD simulation trajectory and log files.
+2. **`structure_generation/pt_anchor.py`**
+   - **Input:** Optimized CeO<sub>2</sub> structures
+   - **Output:** 
+     - Multiple Pt-anchored configurations
+     - Energy-optimized structures
+     - Trajectory files
 
-3. **`structure_generation/o2_envronment_generation.py`**
-   - **Input:** Structure files for Pt/CeO<sub>2</sub> systems and O<sub>2</sub> gas configurations.
-   - **Output:** Packmol input files for generating O<sub>2</sub> environments.
+3. **`structure_generation/structure_reduction.py`**
+   - **Input:** Optimized structures
+   - **Output:** Structures with controlled oxygen vacancies
 
-4. **`structure_generation/pt_anchor.py`**
-   - **Input:** Optimized structures of CeO<sub>2</sub> clusters.
-   - **Output:** Pt-anchored structures saved in PDB format.
+4. **`structure_generation/o2_environment_generation.py`**
+   - **Input:** 
+     - Pt/CeO<sub>2</sub> structures
+     - O<sub>2</sub> molecule template
+   - **Output:** Packmol input files and configurations
 
-5. **`structure_generation/structure_reduction.py`**
-   - **Input:** Trajectory files of optimized structures for vacancy generation.
-   - **Output:** Structures with oxygen vacancies saved in trajectory format.
+5. **`simulation/O2_md_simulation.py`**
+   - **Input:** Generated Pt/CeO<sub>2</sub>/O<sub>2</sub> structures
+   - **Output:** 
+     - MD trajectories
+     - Energy/temperature logs
 
-6. **`structure_generation/structure_generation.py`**
-   - **Input:** Initial cluster structures for generating reduced structures.
-   - **Output:** Reduced structures with specified vacancies.
 
-7. **`structure_generation/pt_anchor.py`**
-   - **Input:** Initial cluster structures for Pt anchoring.
-   - **Output:** Structures with Pt atoms anchored to CeO<sub>2</sub> clusters.
-
-## Notes
-- Ensure that all required input files are available in the specified paths before running the scripts.
-- The output files will be generated in the same directory or specified output directories as indicated in the scripts.
