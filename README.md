@@ -1,6 +1,5 @@
 # Otransfer_PtCeO<sub>2</sub>
 
-## Description
 This repository contains scripts for the preparation, simulation, and analysis of \(O_2\) uptake on Pt/CeO<sub>2</sub>-Al<sub>2</sub>O<sub>3</sub> systems.  
 The work employs neural network potential (NNP) models to study oxygen activation and lattice oxygen transfer dynamics across varying ceria domain sizes.
 
