@@ -42,6 +42,13 @@ The work employs neural network potential (NNP) models to study oxygen activatio
 
 ## Structure Data Requirements
 
+### Large Files
+The following large files are required but not included in this repository:
+- Model structures for all domain sizes and Ce<sup>3+</sup> ratios
+- MD trajectories of annealing and O<sub>2</sub> uptake simulations
+
+These files will be available through Zenodo after the publication of the work.
+
 1. **`structure_generation/ceo2_al2o3_support.py`**
    - **Input:** Al<sub>2</sub>O<sub>3</sub> POSCAR file
    - **Output:** 
@@ -71,5 +78,4 @@ The work employs neural network potential (NNP) models to study oxygen activatio
    - **Output:** 
      - MD trajectories
      - Energy/temperature logs
-
 
