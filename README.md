@@ -22,5 +22,5 @@ The Zenodo repository can be accessed at: [Zenodo link]
 ## Requirements
 - Python 3.x
 - ASE
-- Matlantis (or other equvalent machine learning potential
+- Matlantis (or other equvalent machine learning potential)
 - Packmol
