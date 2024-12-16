@@ -1,0 +1,9 @@
+HEADER    Ideal coordinates
+ for PDB-CCD OXY
+COMPND    OXY
+AUTHOR    pdbccdutils 0.8.2
+AUTHOR    RDKit 2023.03.3
+HETATM    1 O1   OXY A   1       0.000   0.000  -0.501  1.00 20.00           O  
+HETATM    2 O2   OXY A   1       0.000   0.000   0.501  1.00 20.00           O  
+CONECT    1    2    2
+END

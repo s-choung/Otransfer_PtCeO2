@@ -95,7 +95,7 @@ end structure
         else:
             print(f"Packmol encountered an error for {input_file}: {result.stderr}")
 
-    def generate_multiple_structures(self, o2_nums, names, output_dir="inp_files", o2_gas='../O2_gas.pdb'):
+    def generate_multiple_structures(self, o2_nums, names, output_dir="./input/inp_files", o2_gas='./input/O2_gas.pdb'):
         """Generate multiple structure files using Packmol"""
         for oxidation in [20, 30, 40]:
             for size in [0, 1, 2]:

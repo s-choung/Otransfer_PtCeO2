@@ -1,0 +1,15 @@
+tolerance 2
+filetype pdb
+seed -1
+
+output ../out_files/37CA_20p_2_test.pdb
+structure ../../../2_Pt_anchoring/New_Ptnum_24_0722/new_pt_num/20p_new_Pt_0.pdb
+  number 1
+  center
+  fixed 38.0 39.0 8.0 0.0 0.0 0.0
+end structure
+
+structure ../../packmol_center/OXY_ideal.pdb
+   number 152           
+   inside box 3.0 3.0 10.0 73.0 75.0 57.0
+end structure

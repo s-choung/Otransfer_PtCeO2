@@ -258,11 +258,12 @@ def main():
         num_md_steps = 20000
         num_interval = 200
         friction_coeff = 0.002
-        traj_filename = f"./output/md_relaxation_ceo2_al2o3_{i}.traj" # saved in in Zenodo
+        traj_filename = f"./output/md_str_opt_{i}.traj" # saved in in Zenodo with the name of Geometry_relax_MD_CeO2_Al2O3.zip
         log_filename = f"./output/md_relaxation_ceo2_al2o3_{i}.log"
         
         generator.run_md_simulation(atoms, temperature, num_md_steps, num_interval,
                                   friction_coeff, traj_filename, log_filename, time_step)
         write(f'./output/1_ceo2_al2o3/md_relaxed_ceo2_al2o3_{i}.vasp', atoms)  
+
 if __name__ == "__main__":
     main() 

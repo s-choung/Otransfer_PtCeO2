@@ -34,7 +34,7 @@ class TrajectoryAnalyzer:
         radius = ce_max_z - ce_min_z
         return ce_center, radius, ce_max_z, ce_min_z, ce_indice
 
-    def select_tuning_O(self, cluster, cutoff_distance=3.0):
+    def select_tuning_O(self, cluster, cutoff_distance=3.5):
         ce_center, radius, ce_max_z, ce_min_z, ce_indice = self.calculate_ce_geometry(cluster)
         o_indices_tot = np.array([atom.index for atom in cluster if atom.symbol == 'O' and atom.position[2] < ce_max_z + 3])
         o_indices_lower_than_ce_max = np.array([atom.index for atom in cluster if atom.symbol == 'O' and atom.position[2] < ce_max_z + 3])
@@ -45,7 +45,7 @@ class TrajectoryAnalyzer:
         print('number of O that is part of CeO2', len(tuning_O_indices))
         return tuning_O_indices
 
-    def initial_gas_o2_indices_generator(self, cluster, cutoff_distance=3.0):
+    def initial_gas_o2_indices_generator(self, cluster, cutoff_distance=3.5):
         ce_center, radius, ce_max_z, ce_min_z, ce_indice = self.calculate_ce_geometry(cluster)
         o_indices_tot = np.array([atom.index for atom in cluster if atom.symbol == 'O' and atom.position[2] > ce_min_z + 2])
         initial_gas_o2_indices = np.array([index for index in o_indices_tot if distance.euclidean(cluster[index].position, ce_center) > radius + 4])
@@ -185,7 +185,7 @@ def main():
         for j in rand_list:
             traj_list = []
             for i in list_item:
-                traj_filename = f"./w_pt/240722_new_pt_{size[i]}CA_{oxid}p_{j}.traj" #saved in Zenodo
+                traj_filename = f"./done/240722_new_pt_{size[i]}CA_{oxid}p_{j}.traj" # saved in Zenodo with the name of O2_MD_Pt_CeO2_Al2O3.zip
                 try:
                     traj = Trajectory(traj_filename)
                     print(f'{size[i]}CA_{oxid}p_{j}')
@@ -219,7 +219,7 @@ def main():
             pbc_nested_traj.append(pbc_traj_list)
 
         # Save PBC trajectories
-        with open(f'{title}_pbc_test.pkl', 'wb') as f:
+        with open(f'{title}_pbc.pkl', 'wb') as f:
             pickle.dump(pbc_nested_traj, f)
 
         # Process trajectories with analyzers
@@ -239,8 +239,8 @@ def main():
 
         # Save results
         file_name = int(CUTOFF_VAL * 10)
-        os.makedirs('./neighbor', exist_ok=True)
-        with open(f'./neighbor/{title}_nei_{file_name}.pkl', 'wb') as f:
+        os.makedirs('./nei', exist_ok=True)
+        with open(f'./nei/{title}_nei_{file_name}.pkl', 'wb') as f:
             pickle.dump(Ce_dictionary_traj_list_list, f)
 
 if __name__ == "__main__":
