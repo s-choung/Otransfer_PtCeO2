@@ -42,7 +42,7 @@ The work employs neural network potential (NNP) models to study oxygen activatio
 
 ## Large Files
 
-The following files are available through Zenodo [10.5281/zenodo.14498559]:
+The following files are available through [Zenodo](https://zenodo.org/record/14498559):
 
 - MD trajectories from annealing simulations (Geometry_relax_MD_CeO2_Al2O3.zip)
 - O<sub>2</sub> uptake simulation trajectories of CeO2_Al2O3 (O2_MD_CeO2_Al2O3.zip)
